@@ -22,7 +22,7 @@ class ShareActivity : AppCompatActivity() {
         var telShared = intent.getStringExtra("tel").toString()
 
         nameTextView.text = "Nombre: ${nameShared}"
-        nameTextView.text = "Correo: ${nameShared}"
-        nameTextView.text = "Teléfono: ${nameShared}"
+        emailTextView.text = "Correo: ${emailShared}"
+        telTextView.text = "Teléfono: ${telShared}"
     }
 }
