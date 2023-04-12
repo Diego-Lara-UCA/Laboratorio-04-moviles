@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Laboratorio04Lara</string>
+    <string name="name_text">Nombre</string>
+    <string name="email_text">Correo</string>
+    <string name="tel_text">Numero de telefono</string>
+    <string name="button_text_main">Guardar</string>
+    <string name="button_text_share">compartir</string>
+    <string name="example">Rellena la siguiente información</string>
+    <string name="example2">Confirma tu información</string>
+</resources>
