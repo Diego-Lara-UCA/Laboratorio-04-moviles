@@ -1,12 +1,12 @@
 package com.example.laboratorio04lara.UI
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.laboratorio04lara.R
-import android.telephony.SmsManager
-import android.widget.Toast
+
 
 class ShareActivity : AppCompatActivity() {
     private lateinit var nameTextView: TextView
@@ -31,19 +31,15 @@ class ShareActivity : AppCompatActivity() {
         telTextView.text = "Teléfono: ${telShared}"
 
         actionShareImplicit.setOnClickListener{
-            val message = "Nombre ${nameShared}" +
-                    "Correo ${emailShared}" +
-                    "Teléfono ${telShared}"
-
-            try {
-                val smsManager:SmsManager
-                smsManager = this.getSystemService(SmsManager::class.java)
-                smsManager.sendTextMessage("88887777", null, message, null, null)
-                Toast.makeText(applicationContext, "Message Sent", Toast.LENGTH_LONG).show()
-            }catch (e: Exception){
-                Toast.makeText(applicationContext, "Please enter all the data.."+e.message.toString(), Toast.LENGTH_LONG)
-                    .show()
-            }
+            val myIntent = Intent(Intent.ACTION_SEND)
+            myIntent.type = "text/plain"
+            val body = "Nombre: ${nameShared}" +
+                        "Correo: ${emailShared}" +
+                        "Teléfono: ${telShared}"
+            val sub = "Información"
+            myIntent.putExtra(Intent.EXTRA_SUBJECT,sub)
+            myIntent.putExtra(Intent.EXTRA_TEXT,body)
+            startActivity(Intent.createChooser(myIntent, "Compartir información"))
         }
     }
 }
